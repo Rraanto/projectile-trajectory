@@ -20,11 +20,9 @@ class Window(tk.Tk):
         self.title(title)
         self.geometry(f'{width}x{height}')
 
-        # creating all the necessary widgets (labels, buttons, views, etc...)
-        
-
 # testings 
 if __name__ == "__main__": 
     x, y = 601, 962
     my_window = Window(height=x, width=y)
+    my_window.afficher_dimension()
     my_window.mainloop()
