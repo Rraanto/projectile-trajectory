@@ -20,6 +20,13 @@ class Window(tk.Tk):
         self.title(title)
         self.geometry(f'{width}x{height}')
 
+<<<<<<< HEAD
+=======
+        # creating all the necessary widgets (labels, buttons, views, etc...)
+
+        #first step with git
+
+>>>>>>> f33ded060da27fe0fd37b176dcce48c16b3587a2
 # testings 
 if __name__ == "__main__": 
     x, y = 601, 962
