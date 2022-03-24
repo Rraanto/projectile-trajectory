@@ -23,11 +23,6 @@ class Window(tk.Tk):
         self.title(title)
 
         self.geometry(f'{width}x{height}')
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
         self.right_frame = tk.Frame(self)
         self.right_frame.grid(column=1, row=1, sticky='W')
 
@@ -72,7 +67,6 @@ class Window(tk.Tk):
         self.cnv = tk.Canvas(self.left_frame, bg='white', bd=1, width=940, height=601, highlightbackground="grey")
         self.cnv.grid(column=3, row=3, columnspan=3, rowspan=3, pady=20, padx=20, sticky='NE')
 
->>>>>>> 14f9e90863d30afb29066f5316fb859084575636
         # creating all the necessary widgets (labels, buttons, views, etc...)
 
         # the matplotlib figure to put on the canva
@@ -89,11 +83,8 @@ class Window(tk.Tk):
         toolbar.update()
         self.canvas.get_tk_widget().grid(column=3, row=8)
 """
-
->>>>>>> f33ded060da27fe0fd37b176dcce48c16b3587a2
 # testings 
 if __name__ == "__main__":
     x, y = 601, 962
     my_window = Window(height=x, width=y)
-    my_window.afficher_dimension()
     my_window.mainloop()
