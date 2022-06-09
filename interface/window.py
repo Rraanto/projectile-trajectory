@@ -86,9 +86,8 @@ class Window(tk.Tk):
         teta = float(self.angle.get())
         g = 9.81
         equation = engine.functions.get_equation(v0, h0, teta, g)
-        self.plot_canva.draw()
-        self.plot_canva.get_tk_widget().pack()
         engine.functions.plot_trajectory(equation, self.fig)
+        self.plot_canva.draw()
                       
 # testings 
 if __name__ == "__main__":
