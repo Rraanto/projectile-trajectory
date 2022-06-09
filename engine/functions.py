@@ -108,7 +108,6 @@ if __name__ == "__main__":
     canvas = FigureCanvasTkAgg(fig, master=window)
     canvas.draw()
     canvas.get_tk_widget().pack()
-    canvas.get_tk_widget().pack()
 
     plot_trajectory(f, figure=fig, checkpoints=100)
     window.mainloop()
