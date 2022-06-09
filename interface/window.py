@@ -3,6 +3,7 @@ from tkinter import ttk
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import *
 import engine
+from math import pi
 
 """
 Class Window 
@@ -37,25 +38,25 @@ class Window(tk.Tk):
         self.vitesse_lbl.grid(column=0, row=3, pady=2, padx=10, sticky='NW')
         self.vitesse = tk.Entry(self.right_frame, width=10)
         self.vitesse.grid(column=1, row=3, pady=2, padx=10, sticky='NW')
-        self.comboExample = ttk.Combobox(self.right_frame,
+        self.speed_combo = ttk.Combobox(self.right_frame,
                                     values=[
                                         "m/s",
                                         "km/h",
                                         "mi/s",
                                         "mph"], width=5)
-        self.comboExample.grid(column=2, row=3, pady=2, sticky='NW')
-        self.comboExample.current(1)
+        self.speed_combo.grid(column=2, row=3, pady=2, sticky='NW')
+        self.speed_combo.current(1)
 
         self.angle_lbl = tk.Label(self.right_frame, text="Angle")
         self.angle_lbl.grid(column=0, row=4, pady=2, padx=10, sticky='NW')
         self.angle = tk.Entry(self.right_frame, width=10)
         self.angle.grid(column=1, row=4, pady=2, padx=10, sticky='NW')
-        self.comboExample = ttk.Combobox(self.right_frame,
+        self.angles_combo = ttk.Combobox(self.right_frame,
                                         values=[
                                             "teta",
                                             "degree"], width=5)
-        self.comboExample.grid(column=2, row=4, pady=2, sticky='NW')
-        self.comboExample.current(1)
+        self.angles_combo.grid(column=2, row=4, pady=2, sticky='NW')
+        self.angles_combo.current(1)
 
         self.position_lbl = tk.Label(self.right_frame, text="Position")
         self.position_lbl.grid(column=0, row=5, pady=2, padx=10, sticky='NW')
@@ -84,7 +85,12 @@ class Window(tk.Tk):
         v0 = float(self.vitesse.get())
         h0 = float(self.position.get())
         teta = float(self.angle.get())
+        # convert to teta if angle is in degrees
+        if self.angles_combo.get() == "degree":
+            teta = 2*pi*(teta)/360
         g = 9.81
+        
+        print(f"{v0} m/s, {teta}teta")
         equation = engine.functions.get_equation(v0, h0, teta, g)
         engine.functions.plot_trajectory(equation, self.fig)
         self.plot_canva.draw()
