@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from matplotlib.figure import Figure
+from matplotlib.pyplot import clf
 from matplotlib.backends.backend_tkagg import *
 import engine
 from math import pi
@@ -66,8 +67,8 @@ class Window(tk.Tk):
         self.btn = tk.Button(self.right_frame, text=" VIEW ", width=20, command=self.view)
         self.btn.grid(column=1, row=6, pady=10, sticky='NW')
 
-        self.cnv = tk.Canvas(self.left_frame, bg='white', bd=1, width=940, height=601, highlightbackground="grey")  
-        
+        self.cnv = tk.Canvas(self.left_frame, bg='white', bd=1, width=940, height=601, highlightbackground="grey")
+       
         self.fig = Figure()
         self.plot_canva = FigureCanvasTkAgg(self.fig, master=self.cnv)
         self.plot_canva.draw()
@@ -82,6 +83,8 @@ class Window(tk.Tk):
         the figure on which to draw
         the number of checkpoints (default to 100)
         """
+        self.clear_plot()  # resets the current plot 
+
         v0 = float(self.vitesse.get())
         h0 = float(self.position.get())
         teta = float(self.angle.get())
@@ -90,10 +93,15 @@ class Window(tk.Tk):
             teta = 2*pi*(teta)/360
         g = 9.81
         
-        print(f"{v0} m/s, {teta}teta")
         equation = engine.functions.get_equation(v0, h0, teta, g)
         engine.functions.plot_trajectory(equation, self.fig)
         self.plot_canva.draw()
+
+    def clear_plot(self): 
+        """
+        clears the plot that is currently drawn 
+        """
+        self.fig.clf()
                       
 # testings 
 if __name__ == "__main__":

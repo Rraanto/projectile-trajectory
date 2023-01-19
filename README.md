@@ -1,2 +1,2 @@
 # projectile-sim
-Basic simulator of a projectile movement trajectory using tkinter, numpy and matplotlib
+Shows the basic projectile movement trajectory using tkinter, numpy and matplotlib

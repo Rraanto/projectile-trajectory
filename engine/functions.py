@@ -51,11 +51,16 @@ function allowing to get the equation of a motion given the required data
 
 def get_equation(v0, h0, teta, g):
     def om(x):
-        t = x / (v0 * mt.cos(teta))
-        height = -0.5*g*t**2 + t * v0 * mt.sin(teta) + h0
+        # if v0 and h0 is zero, there is no movement: still to modify
+        if v0 == 0 and teta == 0:
+            return 0
+        
+        t = x / (v0 * mt.cos(teta)) 
+        height = -0.5*g*t**2 + t * v0 * mt.sin(teta) + h0 
         # considering the object cannot go under the level 0, the value of the
         # height is the max between 0 and the altitude coordinate
         return max(0, height)
+        
     return om
 
 
